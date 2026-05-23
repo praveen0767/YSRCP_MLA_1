@@ -81,10 +81,10 @@ export default function Home() {
     <div className="flex flex-col w-full min-h-screen bg-slate-50 selection:bg-primary/20">
       
       {/* 1. SWITCHING HERO (Split Editorial Layout) */}
-      <section className="relative w-full pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-100 via-white to-white z-0"></div>
+      <section className="relative w-full min-h-[85vh] flex items-center pt-24 pb-16 lg:pt-32 overflow-hidden bg-white border-b border-slate-100">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-50 via-white to-white z-0"></div>
         
-        <div className="container relative z-10 mx-auto px-4 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="container relative z-10 mx-auto px-4 grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
           
           {/* Left: Typography & Actions */}
           <div className="lg:col-span-6 flex flex-col items-start text-left space-y-8">
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
 
           {/* Right: Perfect Viewing Framed Image */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end w-full">
+          <div className="lg:col-span-6 flex justify-center lg:justify-end w-full mt-8 lg:mt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`img-${mode.id}`}
@@ -156,15 +156,15 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className="relative w-full max-w-[600px] aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden bg-slate-50 shadow-2xl border-4 border-white p-4 lg:p-8"
+                className="relative w-full max-w-[650px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-50"
               >
-                <div className={`absolute inset-0 ${mode.bgAccent} opacity-50`}></div>
+                <div className={`absolute inset-0 ${mode.bgAccent} opacity-30`}></div>
                 <Image 
                   src={mode.image} 
                   alt={mode.headline} 
                   fill 
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain rounded-2xl drop-shadow-xl z-10 p-2" 
+                  className="object-contain z-10 p-4 drop-shadow-lg" 
                   priority 
                 />
               </motion.div>

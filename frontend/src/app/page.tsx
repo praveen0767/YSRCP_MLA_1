@@ -43,7 +43,7 @@ const HERO_MODES = [
     subtitle: "Emergency Response",
     headline: "Standing With You.",
     description: "Rapid intervention during floods, health crises, and local emergencies. Our office ensures no citizen faces hardship alone.",
-    image: "/gallery/Social work/core_1.jpeg",
+    image: "/gallery/core_1.jpeg",
     icon: AlertCircle,
     accent: "text-red-600",
     bgAccent: "bg-red-600/10",
@@ -284,7 +284,7 @@ export default function Home() {
               <div className="relative w-full aspect-square bg-slate-100 p-6 flex items-center justify-center">
                 <div className="absolute inset-0 bg-red-600/5"></div>
                 <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border-4 border-white">
-                  <Image src="/gallery/Social work/core_1.jpeg" alt="Crisis Work" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain bg-slate-100 transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src="/gallery/core_1.jpeg" alt="Crisis Work" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain bg-slate-100 transition-transform duration-1000 group-hover:scale-105" />
                 </div>
               </div>
               <div className="p-10 md:p-12 flex flex-col flex-1 text-slate-900 bg-white">

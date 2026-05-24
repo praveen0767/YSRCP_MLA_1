@@ -2,222 +2,193 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Heart, Droplet, BookOpen, Utensils, Users, ArrowRight, PlayCircle, Calendar } from "lucide-react";
+import { Heart, Droplet, BookOpen, Utensils, Users, ArrowRight, PlayCircle, Calendar, MapPin, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
 const impactStats = [
-  { icon: Droplet, value: "50,000+", label: "People given access to clean water" },
-  { icon: Utensils, value: "10,000+", label: "Meals served during crises" },
-  { icon: BookOpen, value: "5,000+", label: "Students supported with education" },
-  { icon: Heart, value: "100+", label: "Free medical camps organized" }
+  { icon: Droplet, value: "50,000+", label: "Clean Water Access" },
+  { icon: Utensils, value: "10,000+", label: "Emergency Meals" },
+  { icon: BookOpen, value: "5,000+", label: "Students Supported" },
+  { icon: Heart, value: "100+", label: "Medical Camps" }
 ];
 
 const galleryImages = [
-  { src: "/social-work/GoodSeed_1.jpeg", category: "Community Health", date: "Jan 2026", caption: "Free medical camp in Amalapuram rural area." },
-  { src: "/social-work/GoodSeed_2.jpeg", category: "Education", date: "Dec 2025", caption: "Distribution of school kits to underprivileged children." },
-  { src: "/social-work/GoodSeed_3.jpeg", category: "Relief Work", date: "Nov 2025", caption: "Flood relief material distribution." },
-  { src: "/social-work/GoodSeed_5.jpeg", category: "Infrastructure", date: "Oct 2025", caption: "Inauguration of a new community water plant." },
+  { src: "/gallery/Social work/GoodSeed_1.jpeg", category: "Community Health", date: "Jan 2026", caption: "Free medical camp in Amalapuram rural area." },
+  { src: "/gallery/Social work/GoodSeed_2.jpeg", category: "Education", date: "Dec 2025", caption: "Distribution of school kits to underprivileged children." },
+  { src: "/gallery/Social work/GoodSeed_3.jpeg", category: "Relief Work", date: "Nov 2025", caption: "Flood relief material distribution." },
+  { src: "/gallery/Social work/GoodSeed_5.jpeg", category: "Infrastructure", date: "Oct 2025", caption: "Inauguration of a new community water plant." },
 ];
 
 export default function FoundationPage() {
   return (
-    <div className="flex flex-col w-full overflow-hidden bg-slate-50">
+    <div className="flex flex-col w-full min-h-screen bg-slate-50 selection:bg-secondary/20">
 
-      {/* FOUNDATION HERO */}
-      <section className="relative w-full bg-primary pt-24 pb-32 text-white">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/social-work/GoodSeed_1.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/50"></div>
+      {/* CINEMATIC HERO */}
+      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-100">
+        <div className="absolute inset-0 z-0 bg-slate-100">
+          <Image
+            src="/gallery/Social work/GoodSeed_4.jpeg"
+            alt="Good Seed Foundation Team"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center lg:object-[center_30%] opacity-[0.25] mix-blend-multiply"
+          />
+          {/* Vignette and Gradient Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(248,250,252,0.95)_100%)]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/70 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-50/95 via-slate-50/60 to-transparent md:w-3/4"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
+        <div className="w-full max-w-[1800px] relative z-10 mx-auto px-6 md:px-12 h-full flex flex-col justify-center pt-24">
           <motion.div
-            initial="hidden" animate="visible" variants={fadeIn}
-            className="max-w-4xl mx-auto space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl space-y-6"
           >
-            <div className="inline-flex items-center space-x-2 bg-white/20 px-4 py-2 rounded-full text-white backdrop-blur-sm mb-4">
+            <div className="inline-flex items-center space-x-3 bg-white/60 backdrop-blur-md px-5 py-2.5 border-l-2 border-secondary shadow-sm">
               <Heart className="w-4 h-4 text-secondary fill-secondary" />
-              <span className="text-sm font-bold tracking-widest uppercase">Service to People</span>
+              <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-slate-800 uppercase">
+                Service to People
+              </span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-              Good Seed Foundation
+            
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 leading-[0.95]">
+              Good Seed Foundation.
             </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/90 font-medium">
-              The social heartbeat of KUNCHE RAMANARAO FOR AMALAPURAM.
-            </p>
-            <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-              We believe that true leadership starts with compassion. Through the Good Seed Foundation, we have been working tirelessly on the ground to uplift families, respond to crises, and plant the seeds for a better tomorrow.
+            
+            <p className="text-lg md:text-2xl text-slate-700 font-medium leading-relaxed border-l-2 border-secondary/40 pl-6 max-w-3xl">
+              We believe that true leadership starts with compassion. Working tirelessly on the ground to uplift families, respond to crises, and plant the seeds for a better tomorrow in Amalapuram.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* IMPACT CARDS */}
-      <section className="py-12 relative -mt-16 z-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
+      {/* PREMIUM IMPACT CARDS */}
+      <section className="py-12 md:py-24 relative z-20 bg-white border-y border-slate-200">
+        <div className="w-full max-w-[1800px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {impactStats.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <motion.div
-                  key={i} variants={fadeIn}
-                  className="bg-white p-8 rounded-2xl shadow-xl shadow-primary/5 border border-border flex flex-col items-center text-center group hover:-translate-y-1 transition-transform"
+                  key={i} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="bg-slate-50 border border-slate-200 p-8 flex flex-col items-start group hover:bg-white hover:shadow-xl transition-all duration-500"
                 >
-                  <div className="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Icon className="w-8 h-8" />
+                  <div className="w-12 h-12 bg-white border border-slate-200 rounded-none shadow-sm flex items-center justify-center mb-8 group-hover:scale-110 group-hover:border-secondary transition-all duration-500">
+                    <Icon className="w-5 h-5 text-secondary" />
                   </div>
-                  <h3 className="text-3xl font-bold text-primary mb-2">{stat.value}</h3>
-                  <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</p>
+                  <h3 className="text-3xl md:text-5xl font-black text-slate-900 mb-2 md:mb-4 tracking-tighter">{stat.value}</h3>
+                  <div className="w-8 h-px bg-secondary mb-3 md:mb-4 group-hover:w-16 transition-all duration-500"></div>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-relaxed">
+                    {stat.label}
+                  </p>
                 </motion.div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* FLAGSHIP INITIATIVES & BEFORE/AFTER */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-6">Our Flagship Work</h2>
-            <p className="text-lg text-muted-foreground font-medium">
-              We don't just talk about change; we make it visible. Here are some of the critical transformations led by the foundation across Amalapuram.
+      {/* INTERACTIVE TIMELINE */}
+      <section className="py-12 md:py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+        <div className="w-full max-w-[1800px] mx-auto px-6 md:px-12">
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 mb-4 md:mb-6">
+              Journey of Service.
+            </h2>
+            <p className="text-lg text-slate-600 font-medium">
+              Every year, we scale our efforts to reach more families. Our history is defined not by words, but by measurable action on the ground.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <h3 className="text-3xl font-bold text-foreground">Clean Water for All</h3>
-              <p className="text-lg text-muted-foreground">
-                Many remote villages struggled with access to safe drinking water. The Good Seed Foundation stepped in to build robust, modern RO water plants that now serve thousands of households daily.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Identified 15+ water-scarce hamlets.",
-                  "Installed commercial-grade purification systems.",
-                  "Ensured 24/7 maintenance and community ownership."
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start space-x-3">
-                    <div className="mt-1 w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center shrink-0">
-                      <div className="w-2 h-2 rounded-full bg-secondary"></div>
+          <div className="relative max-w-4xl mx-auto">
+            {/* Vertical Line */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-1/2 hidden md:block"></div>
+            
+            <div className="space-y-8 md:space-y-16">
+              {[
+                { year: "2026", title: "Mega Health & Water Drive", desc: "Launched mobile clinics covering 50 villages and inaugurated large-scale RO water plants across rural Amalapuram." },
+                { year: "2025", title: "Flood Relief Operations", desc: "Distributed ration and emergency kits to 2000 affected families within 48 hours of Godavari flooding." },
+                { year: "2024", title: "Foundation Established", desc: "Good Seed Foundation officially registered to consolidate social efforts and scale community service." }
+              ].map((event, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  viewport={{ once: true, margin: "-100px" }} 
+                  transition={{ duration: 0.6 }}
+                  className={`flex flex-col md:flex-row items-center justify-between w-full ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                >
+                  <div className="hidden md:block w-5/12"></div>
+                  
+                  <div className="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-white border-4 border-slate-50 shadow-xl rounded-full my-4 md:my-0">
+                    <span className="text-[10px] font-black text-secondary tracking-widest">{event.year}</span>
+                  </div>
+                  
+                  <div className={`w-full md:w-5/12 ${i % 2 === 0 ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
+                    <div className="bg-white p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-shadow group">
+                      <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-3 md:mb-4">{event.title}</h3>
+                      <p className="text-slate-600 font-medium leading-relaxed">{event.desc}</p>
                     </div>
-                    <span className="font-medium text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button className="mt-4 bg-primary text-white rounded-full">Learn More <ArrowRight className="ml-2 w-4 h-4" /></Button>
-            </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              className="relative rounded-3xl overflow-hidden aspect-video shadow-2xl border-4 border-white"
-            >
-              {/* Using a video placeholder based on the provided mp4 */}
-              <div className="absolute inset-0 bg-slate-200">
-                <Image src="/social-work/GoodSeed_4.jpeg" alt="Water Project" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover opacity-90" />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <PlayCircle className="w-20 h-20 text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
-                </div>
+      {/* GALLERY / PROOF OF WORK */}
+      <section className="py-12 md:py-24 lg:py-32 bg-white border-t border-slate-200">
+        <div className="w-full max-w-[1800px] mx-auto px-6 md:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6 md:gap-8">
+            <div className="max-w-3xl space-y-6">
+              <div className="inline-flex items-center space-x-3">
+                <div className="w-8 h-px bg-secondary"></div>
+                <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">
+                  Proof of Work
+                </span>
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* TIMELINE */}
-      <section className="py-24 bg-slate-100">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-16">Journey of Service</h2>
-          <div className="space-y-12">
-            {[
-              { year: "2026", title: "Mega Health Drive", desc: "Launched mobile clinics covering 50 villages." },
-              { year: "2025", title: "Flood Relief Operations", desc: "Distributed ration and emergency kits to 2000 affected families." },
-              { year: "2024", title: "Foundation Established", desc: "Good Seed Foundation officially registered to serve Amalapuram." }
-            ].map((event, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="flex flex-col md:flex-row gap-6 md:gap-12 items-start"
-              >
-                <div className="flex-shrink-0 w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center text-white font-bold text-2xl shadow-lg">
-                  {event.year}
-                </div>
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-border flex-1 relative">
-                  <div className="absolute top-8 -left-3 w-6 h-6 bg-white border-b border-l border-border transform rotate-45 hidden md:block"></div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{event.title}</h3>
-                  <p className="text-muted-foreground text-lg">{event.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DYNAMIC GALLERY */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4">Proof of Work</h2>
-            <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-              Visual evidence of our commitment to the people. Transparency is our highest priority.
-            </p>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900">
+                Visual Evidence.
+              </h2>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-md border border-border/50"
+                initial={{ opacity: 0, scale: 0.95 }} 
+                whileInView={{ opacity: 1, scale: 1 }} 
+                viewport={{ once: true }} 
+                transition={{ delay: i * 0.1 }}
+                className="group relative rounded-none overflow-hidden aspect-[4/3] bg-slate-100 shadow-md border border-slate-200"
               >
-                <Image src={img.src} alt={img.caption} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80"></div>
+                <Image src={img.src} alt={img.caption} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
 
-                <div className="absolute top-4 left-4">
-                  <span className="bg-secondary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                <div className="absolute top-6 left-6">
+                  <span className="bg-white/90 backdrop-blur-md text-secondary text-[10px] font-bold px-3 py-1 uppercase tracking-widest shadow-sm">
                     {img.category}
                   </span>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                  <div className="flex items-center space-x-2 text-white/80 text-sm font-medium mb-2">
-                    <Calendar className="w-4 h-4" />
+                <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="flex items-center space-x-2 text-white/80 text-[10px] uppercase font-bold tracking-widest mb-3">
+                    <Calendar className="w-3.5 h-3.5" />
                     <span>{img.date}</span>
                   </div>
-                  <p className="text-white text-lg font-bold leading-tight">{img.caption}</p>
+                  <p className="text-white text-xl md:text-2xl font-bold leading-tight">{img.caption}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Button size="lg" variant="outline" className="rounded-full border-primary/30 text-primary hover:bg-primary hover:text-white px-8">
-              View All Activities
-            </Button>
           </div>
         </div>
       </section>

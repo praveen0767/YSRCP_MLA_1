@@ -48,10 +48,10 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className={`font-black text-lg tracking-tight leading-none transition-colors duration-300 ${isScrolled ? 'text-slate-900' : 'text-slate-900 drop-shadow-sm'}`}>
+              <span className={`font-black text-lg tracking-tight leading-none transition-colors duration-300 ${isScrolled ? 'text-slate-900' : 'text-white drop-shadow-md'}`}>
                 KUNCHE RAMANARAO
               </span>
-              <span className={`text-[10px] font-bold tracking-[0.2em] uppercase mt-1 transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-primary drop-shadow-sm'}`}>
+              <span className={`text-[10px] font-bold tracking-[0.2em] uppercase mt-1 transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-primary drop-shadow-md brightness-150'}`}>
                 For Amalapuram
               </span>
             </div>
@@ -65,12 +65,12 @@ export function Navbar() {
                 href={link.href}
                 className={`text-xs font-bold uppercase tracking-widest transition-all duration-300 relative group ${
                   link.isHighlight 
-                    ? "text-secondary hover:text-secondary/80" 
-                    : isScrolled ? "text-slate-600 hover:text-primary" : "text-slate-800 hover:text-primary drop-shadow-sm"
+                    ? (isScrolled ? "text-secondary hover:text-secondary/80" : "text-secondary drop-shadow-md hover:text-white brightness-110") 
+                    : isScrolled ? "text-slate-600 hover:text-primary" : "text-white/90 hover:text-white drop-shadow-md"
                 }`}
               >
                 {link.label}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${link.isHighlight ? 'bg-secondary' : 'bg-primary'}`}></span>
+                <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'w-0' : 'w-0'} ${link.isHighlight ? 'bg-secondary' : 'bg-white'}`}></span>
               </Link>
             ))}
             
@@ -85,7 +85,7 @@ export function Navbar() {
 
           {/* Mobile Toggle */}
           <button 
-            className="lg:hidden relative z-50 p-2 -mr-2 text-slate-900"
+            className={`lg:hidden relative z-50 p-2 -mr-2 transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'text-slate-900' : 'text-white'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >

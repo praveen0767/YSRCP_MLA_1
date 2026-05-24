@@ -6,24 +6,24 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Calendar, Camera } from "lucide-react";
 
 const MEDIA_ARCHIVE = [
-  { id: 1, src: "/gallery/Delight/D1.jpeg", category: "Events", tag: "Public Address", alt: "Addressing the constituency gathering", span: "col-span-1 md:col-span-2 row-span-2", date: "May 2026" },
-  { id: 2, src: "/gallery/Par_core_3.jpeg", category: "Public Work", tag: "Governance", alt: "Legislative session and discussions", span: "col-span-1 row-span-1", date: "Apr 2026" },
-  { id: 3, src: "/gallery/Social work/GoodSeed_2.jpeg", category: "Social Work", tag: "Education", alt: "School kit distribution", span: "col-span-1 row-span-1", date: "Mar 2026" },
-  { id: 4, src: "/gallery/Delight/DH.jpeg", category: "Portraits", tag: "Leadership", alt: "Official portrait of Kunche Ramanarao", span: "col-span-1 row-span-2", date: "Jan 2026" },
-  { id: 5, src: "/gallery/Praise_1.jpeg", category: "Public Work", tag: "Community", alt: "Meeting local leaders", span: "col-span-1 row-span-1", date: "Feb 2026" },
-  { id: 6, src: "/gallery/core_1.jpeg", category: "Crisis", tag: "Emergency Relief", alt: "Crisis management and rapid response", span: "col-span-1 md:col-span-2 row-span-1", date: "Nov 2025" },
-  { id: 7, src: "/gallery/Praise_2.jpeg", category: "Events", tag: "Public Rally", alt: "Addressing a large public gathering", span: "col-span-1 row-span-2", date: "Oct 2025" },
-  { id: 8, src: "/gallery/Social work/GoodSeed_3.jpeg", category: "Crisis", tag: "Relief Work", alt: "Flood relief material distribution", span: "col-span-1 row-span-1", date: "Sep 2025" },
-  { id: 9, src: "/gallery/Par_core_1.jpeg", category: "Public Work", tag: "Governance", alt: "Reviewing infrastructure projects", span: "col-span-1 row-span-1", date: "Aug 2025" },
-  { id: 10, src: "/gallery/Social work/GoodSeed_5.jpeg", category: "Social Work", tag: "Infrastructure", alt: "Water plant inauguration", span: "col-span-1 row-span-1", date: "Jul 2025" },
-  { id: 11, src: "/gallery/Delight/D2.jpeg", category: "Events", tag: "Campaign", alt: "Connecting with the youth", span: "col-span-1 md:col-span-2 row-span-2", date: "Jun 2025" },
-  { id: 12, src: "/gallery/Delight/D4.jpeg", category: "Events", tag: "Rally", alt: "Leading the constituency rally", span: "col-span-1 row-span-1", date: "May 2025" },
-  { id: 13, src: "/gallery/Par_core_2.jpeg", category: "Public Work", tag: "Field Visit", alt: "Inspecting local development sites", span: "col-span-1 row-span-1", date: "Apr 2025" },
-  { id: 14, src: "/gallery/Social work/GoodSeed_1.jpeg", category: "Social Work", tag: "Health Camp", alt: "Free medical camp", span: "col-span-1 md:col-span-2 row-span-1", date: "Mar 2025" },
-  { id: 15, src: "/gallery/Delight/D5.jpeg", category: "Events", tag: "Campaign", alt: "Felicitation by community leaders", span: "col-span-1 md:col-span-1 row-span-1", date: "Feb 2025" },
-  { id: 16, src: "/gallery/Delight/D3.jpeg", category: "Events", tag: "Gathering", alt: "Interacting with local citizens", span: "col-span-1 md:col-span-1 row-span-1", date: "Jan 2025" },
-  { id: 17, src: "/gallery/Par_core_4.jpeg", category: "Public Work", tag: "Strategy", alt: "Planning session with party members", span: "col-span-1 md:col-span-1 row-span-1", date: "Dec 2024" },
-  { id: 18, src: "/gallery/Social work/GoodSeed_4.jpeg", category: "Social Work", tag: "Welfare", alt: "Good Seed Foundation team at work", span: "col-span-1 md:col-span-2 row-span-1", date: "Nov 2024" }
+  { id: 1, src: "/gallery/Delight/D1.jpeg", category: "Events", tag: "Public Address", alt: "Addressing the constituency gathering", span: "col-span-1 md:col-span-2 row-span-2", date: "May 2026", position: "object-left", fit: "object-contain bg-slate-50" },
+  { id: 2, src: "/gallery/Par_core_3.jpeg", category: "Public Work", tag: "Governance", alt: "Legislative session and discussions", span: "col-span-1 row-span-1", date: "Apr 2026", position: "object-bottom" },
+  { id: 3, src: "/gallery/Social work/GoodSeed_2.jpeg", category: "Social Work", tag: "Education", alt: "School kit distribution", span: "col-span-1 row-span-1", date: "Mar 2026", position: "object-[center_20%]" },
+  { id: 4, src: "/gallery/Delight/DH.jpeg", category: "Portraits", tag: "Leadership", alt: "Official portrait of Kunche Ramanarao", span: "col-span-1 row-span-2", date: "Jan 2026", position: "object-[center_10%]" },
+  { id: 5, src: "/gallery/Praise_1.jpeg", category: "Public Work", tag: "Community", alt: "Meeting local leaders", span: "col-span-1 row-span-1", date: "Feb 2026", position: "object-[center_15%]", fit: "object-contain bg-slate-900" },
+  { id: 6, src: "/gallery/core_1.jpeg", category: "Crisis", tag: "Emergency Relief", alt: "Crisis management and rapid response", span: "col-span-1 md:col-span-2 row-span-1", date: "Nov 2025", position: "object-[center_15%]", fit: "object-contain bg-slate-50" },
+  { id: 7, src: "/gallery/Praise_2.jpeg", category: "Events", tag: "Public Rally", alt: "Addressing a large public gathering", span: "col-span-1 row-span-2", date: "Oct 2025", position: "object-center" },
+  { id: 8, src: "/gallery/Social work/GoodSeed_3.jpeg", category: "Crisis", tag: "Relief Work", alt: "Flood relief material distribution", span: "col-span-1 row-span-1", date: "Sep 2025", position: "object-[center_15%]", fit: "object-contain bg-slate-50" },
+  { id: 9, src: "/gallery/Par_core_1.jpeg", category: "Public Work", tag: "Governance", alt: "Reviewing infrastructure projects", span: "col-span-1 row-span-1", date: "Aug 2025", position: "object-[center_10%]", fit: "object-contain bg-slate-50" },
+  { id: 10, src: "/gallery/Social work/GoodSeed_5.jpeg", category: "Social Work", tag: "Infrastructure", alt: "Water plant inauguration", span: "col-span-1 row-span-1", date: "Jul 2025", position: "object-[center_10%]", fit: "object-contain bg-slate-50" },
+  { id: 11, src: "/gallery/Delight/D2.jpeg", category: "Events", tag: "Campaign", alt: "Connecting with the youth", span: "col-span-1 md:col-span-2 row-span-2", date: "Jun 2025", position: "object-[center_15%]" },
+  { id: 12, src: "/gallery/Delight/D4.jpeg", category: "Events", tag: "Rally", alt: "Leading the constituency rally", span: "col-span-1 row-span-1", date: "May 2025", position: "object-[center_15%]" },
+  { id: 13, src: "/gallery/Par_core_2.jpeg", category: "Public Work", tag: "Field Visit", alt: "Inspecting local development sites", span: "col-span-1 row-span-1", date: "Apr 2025", position: "object-[center_15%]" },
+  { id: 14, src: "/gallery/Social work/GoodSeed_1.jpeg", category: "Social Work", tag: "Health Camp", alt: "Free medical camp", span: "col-span-1 md:col-span-2 row-span-1", date: "Mar 2025", position: "object-[center_15%]" },
+  { id: 15, src: "/gallery/Delight/D5.jpeg", category: "Events", tag: "Campaign", alt: "Felicitation by community leaders", span: "col-span-1 md:col-span-1 row-span-1", date: "Feb 2025", position: "object-[center_20%]" },
+  { id: 16, src: "/gallery/Delight/D3.jpeg", category: "Events", tag: "Gathering", alt: "Interacting with local citizens", span: "col-span-1 md:col-span-1 row-span-1", date: "Jan 2025", position: "object-[center_20%]" },
+  { id: 17, src: "/gallery/Par_core_4.jpeg", category: "Public Work", tag: "Strategy", alt: "Planning session with party members", span: "col-span-1 md:col-span-1 row-span-1", date: "Dec 2024", position: "object-[center_15%]" },
+  { id: 18, src: "/gallery/Social work/GoodSeed_4.jpeg", category: "Social Work", tag: "Welfare", alt: "Good Seed Foundation team at work", span: "col-span-1 md:col-span-2 row-span-1", date: "Nov 2024", position: "object-[center_15%]" }
 ];
 
 const FILTER_CATEGORIES = ["All", "Public Work", "Social Work", "Crisis", "Events", "Portraits"];
@@ -47,7 +47,7 @@ export default function MediaArchivePage() {
             alt="Campaign Work Hero"
             fill
             priority
-            className="object-cover opacity-30 mix-blend-overlay"
+            className="object-cover object-top opacity-30 mix-blend-overlay"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
         </div>
@@ -136,8 +136,8 @@ export default function MediaArchivePage() {
                 transition={{ delay: i * 0.1 }}
                 className="min-w-[300px] md:min-w-[400px] snap-center bg-white border border-slate-200 shadow-sm group hover:shadow-xl transition-all"
               >
-                <div className="relative aspect-video overflow-hidden border-b border-slate-100">
-                  <Image src={MEDIA_ARCHIVE[i + 5].src} alt="Timeline" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="relative aspect-square overflow-hidden border-b border-slate-100">
+                  <Image src={MEDIA_ARCHIVE[i + 5].src} alt="Timeline" fill className={`${MEDIA_ARCHIVE[i + 5].fit || 'object-cover'} ${MEDIA_ARCHIVE[i + 5].position || 'object-center'} group-hover:scale-105 transition-transform duration-700`} />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-slate-900 shadow-sm flex items-center">
                     <Calendar className="w-3 h-3 mr-1" />
                     {MEDIA_ARCHIVE[i + 5].date}
@@ -189,7 +189,7 @@ export default function MediaArchivePage() {
             ))}
           </motion.div>
 
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[250px] gap-4">
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[350px] gap-4">
             <AnimatePresence>
               {filteredGallery.map((item, i) => (
                 <motion.div 
@@ -200,24 +200,20 @@ export default function MediaArchivePage() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                   onClick={() => setSelectedImageIndex(i)}
-                  className={`relative rounded-none overflow-hidden group ${item.span} bg-white shadow-md border border-slate-200 cursor-zoom-in`}
+                  className={`relative rounded-xl overflow-hidden group ${item.span} bg-slate-50 shadow-md border border-slate-200 cursor-zoom-in`}
                 >
                   <div className="relative w-full h-full">
-                    <Image src={item.src} alt={item.alt} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <Image src={item.src} alt={item.alt} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" className="object-contain transition-transform duration-1000 group-hover:scale-105" />
                     
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none"></div>
                     
-                    <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                      <div className="flex items-center space-x-2 text-white/80 text-[10px] uppercase font-bold tracking-widest mb-3">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>{item.date}</span>
-                      </div>
-                      <span className="text-[10px] font-bold bg-primary text-white px-3 py-1 uppercase tracking-widest mb-3 inline-block shadow-sm">
-                        {item.tag}
+                    <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
+                      <span className="inline-block px-2 py-1 bg-slate-900/80 backdrop-blur-md text-[9px] font-black tracking-widest text-white uppercase mb-3 border-l-2 border-primary">
+                        {item.category} • {item.tag}
                       </span>
-                      <p className="text-white font-bold text-lg leading-tight transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-white leading-tight pr-4">
                         {item.alt}
-                      </p>
+                      </h3>
                     </div>
                   </div>
                 </motion.div>
@@ -267,7 +263,7 @@ export default function MediaArchivePage() {
                 src={filteredGallery[selectedImageIndex].src} 
                 alt={filteredGallery[selectedImageIndex].alt} 
                 fill 
-                className="object-contain bg-black/50"
+                className="object-cover bg-black/50"
               />
               
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-8">

@@ -24,45 +24,76 @@ export default function FoundationPage() {
     <div className="flex flex-col w-full min-h-screen bg-slate-50 selection:bg-secondary/20">
 
       {/* CINEMATIC HERO */}
-      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-100">
-        <div className="absolute inset-0 z-0 bg-slate-100">
+      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 z-0">
           <Image
             src="/gallery/Social work/GoodSeed_4.jpeg"
             alt="Good Seed Foundation Team"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center lg:object-[center_30%] opacity-[0.25] mix-blend-multiply"
+            className="object-cover object-center lg:object-[center_30%] opacity-40 mix-blend-overlay"
           />
-          {/* Vignette and Gradient Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(248,250,252,0.95)_100%)]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/70 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-50/95 via-slate-50/60 to-transparent md:w-3/4"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/50 to-transparent pointer-events-none md:w-3/4"></div>
+          {/* Subtle glowing orb */}
+          <motion.div 
+            animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 blur-[120px] rounded-full mix-blend-screen pointer-events-none"
+          ></motion.div>
         </div>
 
         <div className="w-full max-w-[1800px] relative z-10 mx-auto px-6 md:px-12 h-full flex flex-col justify-center pt-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-4xl space-y-6"
           >
-            <div className="inline-flex items-center space-x-3 bg-white/60 backdrop-blur-md px-5 py-2.5 border-l-2 border-secondary shadow-sm">
-              <Heart className="w-4 h-4 text-secondary fill-secondary" />
-              <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-slate-800 uppercase">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md px-5 py-2.5 border-l-2 border-secondary shadow-lg hover:bg-white/20 transition-colors"
+            >
+              <Heart className="w-4 h-4 text-secondary fill-secondary animate-pulse" />
+              <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white uppercase drop-shadow-md">
                 Service to People
               </span>
-            </div>
+            </motion.div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 leading-[0.95]">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500 leading-[0.95] drop-shadow-xl">
               Good Seed Foundation.
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-700 font-medium leading-relaxed border-l-2 border-secondary/40 pl-6 max-w-3xl">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed border-l-2 border-secondary/40 pl-6 max-w-3xl drop-shadow-sm"
+            >
               We believe that true leadership starts with compassion. Working tirelessly on the ground to uplift families, respond to crises, and plant the seeds for a better tomorrow in Amalapuram.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2"
+        >
+          <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-slate-400">Discover</span>
+          <div className="w-px h-12 bg-slate-800 relative overflow-hidden">
+            <motion.div 
+              animate={{ y: ["-100%", "100%"] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              className="absolute top-0 left-0 w-full h-1/2 bg-secondary"
+            />
+          </div>
+        </motion.div>
       </section>
 
       {/* PREMIUM IMPACT CARDS */}
@@ -161,7 +192,7 @@ export default function FoundationPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="columns-1 md:columns-2 gap-8 space-y-8">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={i}
@@ -169,10 +200,11 @@ export default function FoundationPage() {
                 whileInView={{ opacity: 1, scale: 1 }} 
                 viewport={{ once: true }} 
                 transition={{ delay: i * 0.1 }}
-                className="group relative rounded-none overflow-hidden aspect-[4/3] bg-slate-100 shadow-md border border-slate-200"
+                className="group break-inside-avoid relative rounded-none overflow-hidden bg-slate-50 shadow-md border border-slate-200"
               >
-                <Image src={img.src} alt={img.caption} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.caption} className="w-full h-auto block transition-transform duration-1000 group-hover:scale-[1.03]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none"></div>
 
                 <div className="absolute top-6 left-6">
                   <span className="bg-white/90 backdrop-blur-md text-secondary text-[10px] font-bold px-3 py-1 uppercase tracking-widest shadow-sm">

@@ -71,7 +71,7 @@ export default function Home() {
     <div className="flex flex-col w-full min-h-screen bg-slate-50 selection:bg-primary/20">
       
       {/* 1. CINEMATIC STATIC HERO */}
-      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-900">
+      <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-900">
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -92,32 +92,23 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </div>
 
-        <div className="w-full max-w-[1800px] relative z-10 mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-20 md:pb-32 text-center md:text-left">
+        <div className="w-full max-w-[1800px] relative z-10 mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-40 lg:pb-32 text-center md:text-left">
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full max-w-5xl space-y-6 md:space-y-8"
+            className="w-full max-w-3xl space-y-6 md:space-y-8 pt-32 lg:pt-0"
           >
-            {/* Identity Strip */}
-            <div className="inline-flex items-center justify-center md:justify-start space-x-3 bg-slate-900/60 backdrop-blur-md px-5 py-2.5 border-l-2 border-secondary shadow-sm mx-auto md:mx-0">
-              <ShieldCheck className="w-4 h-4 text-secondary" />
-              <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white uppercase">
-                The Face of Service in Amalapuram
-              </span>
-            </div>
-
             {/* Monumental Slogan */}
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] xl:text-[8rem] font-black text-white tracking-tighter leading-[0.9] drop-shadow-2xl">
+            <h1 className="hidden md:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1] drop-shadow-2xl">
               KUNCHE RAMANARAO <br className="hidden md:block" />
-              <span className="text-secondary opacity-95 block mt-2">FOR AMALAPURAM</span>
+              <span className="text-white opacity-90 block mt-2">FOR AMALAPURAM</span>
             </h1>
             
             {/* Supporting Trust Line */}
-            <p className="text-lg md:text-3xl text-slate-200 font-medium leading-relaxed max-w-3xl border-l-2 border-secondary/50 pl-6 mx-auto md:mx-0 text-left">
-              Social work. Public work. Crisis work. <br className="hidden md:block" />
-              A leader with the people, for the people.
+            <p className="text-[11px] sm:text-sm md:text-2xl lg:text-3xl text-slate-200 font-bold tracking-[0.2em] uppercase leading-relaxed max-w-3xl border-l-2 border-secondary/50 pl-4 md:pl-6 mx-auto md:mx-0 text-left">
+              Of the people. For the people. By the people.
             </p>
             
             {/* CTA Zone */}
@@ -135,6 +126,27 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
+        
+        {/* Animated Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center justify-center cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
+          onClick={() => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold text-white/80 mb-3 drop-shadow-md">Scroll to discover</span>
+          <motion.div 
+            animate={{ y: [0, 16, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-[3px] h-12 lg:h-16 bg-gradient-to-b from-secondary to-transparent"
+          />
+        </motion.div>
       </section>
 
       {/* 2. LEADERSHIP PROFILE (ABOUT) */}
@@ -158,7 +170,7 @@ export default function Home() {
                   alt="Kunche Ramanarao Official Portrait" 
                   fill 
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               </div>
               
@@ -347,8 +359,9 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="group flex flex-col bg-white border border-slate-200 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative w-full h-48 overflow-hidden bg-slate-100">
-                <Image src="/gallery/Social work/GoodSeed_1.jpeg" alt="Health Camps" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="relative w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/gallery/Social work/GoodSeed_1.jpeg" alt="Health Camps" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm">
                   Healthcare
                 </div>
@@ -373,8 +386,9 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="group flex flex-col bg-white border border-slate-200 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative w-full h-48 overflow-hidden bg-slate-100">
-                <Image src="/gallery/Par_core_2.jpeg" alt="Governance" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="relative w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/gallery/Par_core_2.jpeg" alt="Governance" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm">
                   Governance
                 </div>
@@ -399,8 +413,9 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="group flex flex-col bg-white border border-slate-200 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative w-full h-48 overflow-hidden bg-slate-100">
-                <Image src="/gallery/core_1.jpeg" alt="Crisis Relief" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="relative w-full overflow-hidden bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/gallery/core_1.jpeg" alt="Crisis Relief" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-red-600 shadow-sm">
                   Emergency
                 </div>
@@ -442,8 +457,9 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-white border border-slate-200 shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
-                  <Image src={post.image} alt={post.category} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="relative w-full overflow-hidden bg-slate-50">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={post.image} alt={post.category} className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary shadow-sm">
                     {post.category}
                   </div>
@@ -533,7 +549,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[300px] gap-4">
+          <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             <AnimatePresence>
               {filteredGallery.map((item, i) => (
                 <motion.div 
@@ -544,14 +560,15 @@ export default function Home() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                   onClick={() => setSelectedImageIndex(i)}
-                  className={`relative rounded-none overflow-hidden group ${item.span} bg-white shadow-md border border-slate-200 cursor-zoom-in`}
+                  className="break-inside-avoid relative rounded-none overflow-hidden group bg-slate-50 shadow-md border border-slate-200 cursor-zoom-in mb-4"
                 >
-                <div className="relative w-full h-full">
-                  <Image src={item.src} alt={item.alt} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <div className="relative w-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.src} alt={item.alt} className="w-full h-auto block transition-transform duration-1000 group-hover:scale-[1.03]" loading="lazy" />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none"></div>
                   
-                  <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
                     <span className="text-[10px] font-bold bg-primary text-white px-3 py-1 uppercase tracking-widest mb-3 inline-block shadow-sm">
                       {item.tag}
                     </span>
@@ -561,8 +578,8 @@ export default function Home() {
                   </div>
                   
                   {/* Decorative corner lines */}
-                  <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </motion.div>
             ))}
@@ -628,7 +645,7 @@ export default function Home() {
                 src={filteredGallery[selectedImageIndex].src} 
                 alt={filteredGallery[selectedImageIndex].alt} 
                 fill 
-                className="object-contain bg-black/50"
+                className="object-cover bg-black/50"
               />
               
               {/* Caption Overlay */}

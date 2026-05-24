@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Calendar, Camera } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const MEDIA_ARCHIVE = [
   { id: 1, src: "/gallery/Delight/D1.jpeg", category: "Events", tag: "Public Address", alt: "Addressing the constituency gathering", span: "col-span-1 md:col-span-2 row-span-2", date: "May 2026", position: "object-left", fit: "object-contain bg-slate-50" },
@@ -29,6 +30,7 @@ const MEDIA_ARCHIVE = [
 const FILTER_CATEGORIES = ["All", "Public Work", "Social Work", "Crisis", "Events", "Portraits"];
 
 export default function MediaArchivePage() {
+  const { t, language } = useLanguage();
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
@@ -62,16 +64,16 @@ export default function MediaArchivePage() {
             <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md px-5 py-2.5 border-l-2 border-secondary mx-auto md:mx-0">
               <Camera className="w-4 h-4 text-white" />
               <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white uppercase">
-                Official Media System
+                {language === 'te' ? 'అధికారిక మీడియా వ్యవస్థ' : 'Official Media System'}
               </span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.95]">
-              Work Archive.
+              {language === 'te' ? 'కార్యక్రమాల ఆర్కైవ్.' : 'Work Archive.'}
             </h1>
             
             <p className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed max-w-3xl border-l-2 border-secondary/40 pl-6 mx-auto md:mx-0 text-left">
-              The living record of our service. Every photograph is undeniable proof of our commitment to the people of Amalapuram.
+              {language === 'te' ? 'మా సేవా కార్యక్రమాలకు సజీవ సాక్ష్యం. ప్రతి ఛాయాచిత్రం అమలాపురం ప్రజల పట్ల మా నిబద్ధతకు తిరుగులేని రుజువు.' : 'The living record of our service. Every photograph is undeniable proof of our commitment to the people of Amalapuram.'}
             </p>
           </motion.div>
         </div>
@@ -81,7 +83,7 @@ export default function MediaArchivePage() {
       <section className="py-12 md:py-24 bg-white border-b border-slate-200">
         <div className="w-full max-w-[1800px] mx-auto px-6 lg:px-12">
           <div className="mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900">Featured Highlights</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900">{language === 'te' ? 'ప్రధాన ముఖ్యాంశాలు' : 'Featured Highlights'}</h2>
             <div className="w-16 h-1 bg-secondary mt-4"></div>
           </div>
 
@@ -95,8 +97,8 @@ export default function MediaArchivePage() {
               <Image src="/gallery/Praise_2.jpeg" alt="Mass Gathering" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-90"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <span className="text-[10px] font-bold bg-primary px-3 py-1 uppercase tracking-widest mb-4 inline-block shadow-sm">Public Rally</span>
-                <h3 className="text-3xl font-black leading-tight">Addressing the Heart of Amalapuram</h3>
+                <span className="text-[10px] font-bold bg-primary px-3 py-1 uppercase tracking-widest mb-4 inline-block shadow-sm">{language === 'te' ? 'బహిరంగ సభ' : 'Public Rally'}</span>
+                <h3 className="text-3xl font-black leading-tight">{language === 'te' ? 'అమలాపురం గుండెచప్పుడు' : 'Addressing the Heart of Amalapuram'}</h3>
               </div>
             </motion.div>
 
@@ -110,8 +112,8 @@ export default function MediaArchivePage() {
               <Image src="/gallery/Par_core_3.jpeg" alt="Legislative Session" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-90"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <span className="text-[10px] font-bold bg-primary px-3 py-1 uppercase tracking-widest mb-4 inline-block shadow-sm">Governance</span>
-                <h3 className="text-3xl font-black leading-tight">Championing Policy & Development</h3>
+                <span className="text-[10px] font-bold bg-primary px-3 py-1 uppercase tracking-widest mb-4 inline-block shadow-sm">{language === 'te' ? 'పరిపాలన' : 'Governance'}</span>
+                <h3 className="text-3xl font-black leading-tight">{language === 'te' ? 'విధానం & అభివృద్ధి సాధన' : 'Championing Policy & Development'}</h3>
               </div>
             </motion.div>
           </div>
@@ -122,8 +124,8 @@ export default function MediaArchivePage() {
       <section className="py-12 md:py-24 bg-slate-50 border-b border-slate-200 overflow-hidden relative">
         <div className="w-full max-w-[1800px] mx-auto px-6 lg:px-12">
           <div className="mb-12 md:mb-16 text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900">Campaign Timeline</h2>
-            <p className="mt-4 text-slate-600">A chronological record of ground-level impact.</p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900">{language === 'te' ? 'ప్రచార కాలక్రమం' : 'Campaign Timeline'}</h2>
+            <p className="mt-4 text-slate-600">{language === 'te' ? 'క్షేత్రస్థాయి ప్రభావం యొక్క కాలానుగుణ రికార్డు.' : 'A chronological record of ground-level impact.'}</p>
           </div>
 
           <div className="flex space-x-6 overflow-x-auto pb-12 snap-x hide-scrollbar px-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -144,8 +146,8 @@ export default function MediaArchivePage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h4 className="text-lg font-black text-slate-900 mb-2">{MEDIA_ARCHIVE[i + 5].alt}</h4>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{MEDIA_ARCHIVE[i + 5].tag}</p>
+                  <h4 className="text-lg font-black text-slate-900 mb-2">{language === 'te' ? 'కార్యక్రమ దృశ్యం' : MEDIA_ARCHIVE[i + 5].alt}</h4>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{language === 'te' ? (MEDIA_ARCHIVE[i + 5].tag === 'Public Address' ? 'బహిరంగ సభ' : MEDIA_ARCHIVE[i + 5].tag === 'Governance' ? 'పరిపాలన' : MEDIA_ARCHIVE[i + 5].tag === 'Education' ? 'విద్య' : MEDIA_ARCHIVE[i + 5].tag === 'Leadership' ? 'నాయకత్వం' : MEDIA_ARCHIVE[i + 5].tag === 'Community' ? 'కమ్యూనిటీ' : MEDIA_ARCHIVE[i + 5].tag === 'Emergency Relief' ? 'అత్యవసర సహాయం' : MEDIA_ARCHIVE[i + 5].tag === 'Public Rally' ? 'బహిరంగ సభ' : MEDIA_ARCHIVE[i + 5].tag === 'Relief Work' ? 'సహాయక చర్యలు' : MEDIA_ARCHIVE[i + 5].tag === 'Infrastructure' ? 'మౌలిక సదుపాయాలు' : MEDIA_ARCHIVE[i + 5].tag === 'Campaign' ? 'ప్రచారం' : MEDIA_ARCHIVE[i + 5].tag === 'Rally' ? 'ర్యాలీ' : MEDIA_ARCHIVE[i + 5].tag === 'Field Visit' ? 'క్షేత్ర పర్యటన' : MEDIA_ARCHIVE[i + 5].tag === 'Health Camp' ? 'వైద్య శిబిరం' : MEDIA_ARCHIVE[i + 5].tag) : MEDIA_ARCHIVE[i + 5].tag}</p>
                 </div>
               </motion.div>
             ))}
@@ -159,10 +161,10 @@ export default function MediaArchivePage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-6 md:gap-8">
             <div className="space-y-4 max-w-3xl">
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900">
-                Complete Media Grid.
+                {language === 'te' ? 'పూర్తి మీడియా గ్రిడ్.' : 'Complete Media Grid.'}
               </h2>
               <p className="text-lg text-slate-600 font-light max-w-2xl">
-                Filter through our entire archive to see the breadth of our work.
+                {language === 'te' ? 'మా సేవా కార్యక్రమాలను చూడటానికి ఈ ఫిల్టర్లను ఉపయోగించండి.' : 'Filter through our entire archive to see the breadth of our work.'}
               </p>
             </div>
           </div>
@@ -184,7 +186,7 @@ export default function MediaArchivePage() {
                     : "bg-white text-slate-600 border-slate-200 hover:border-primary/30 hover:bg-slate-50"
                 }`}
               >
-                {cat}
+                {t(cat === 'All' ? 'categories.all' : cat === 'Public Work' ? 'categories.publicWork' : cat === 'Social Work' ? 'categories.socialWork' : cat === 'Crisis' ? 'categories.crisis' : cat === 'Events' ? 'categories.events' : 'categories.portraits')}
               </button>
             ))}
           </motion.div>
@@ -209,10 +211,10 @@ export default function MediaArchivePage() {
                     
                     <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
                       <span className="inline-block px-2 py-1 bg-slate-900/80 backdrop-blur-md text-[9px] font-black tracking-widest text-white uppercase mb-3 border-l-2 border-primary">
-                        {item.category} • {item.tag}
+                        {t(item.category === 'Public Work' ? 'categories.publicWork' : item.category === 'Social Work' ? 'categories.socialWork' : item.category === 'Crisis' ? 'categories.crisis' : item.category === 'Events' ? 'categories.events' : item.category === 'Portraits' ? 'categories.portraits' : 'categories.all')} • {language === 'te' ? (item.tag === 'Public Address' ? 'బహిరంగ సభ' : item.tag === 'Governance' ? 'పరిపాలన' : item.tag === 'Education' ? 'విద్య' : item.tag === 'Leadership' ? 'నాయకత్వం' : item.tag === 'Community' ? 'కమ్యూనిటీ' : item.tag === 'Emergency Relief' ? 'అత్యవసర సహాయం' : item.tag === 'Public Rally' ? 'బహిరంగ సభ' : item.tag === 'Relief Work' ? 'సహాయక చర్యలు' : item.tag === 'Infrastructure' ? 'మౌలిక సదుపాయాలు' : item.tag === 'Campaign' ? 'ప్రచారం' : item.tag === 'Rally' ? 'ర్యాలీ' : item.tag === 'Field Visit' ? 'క్షేత్ర పర్యటన' : item.tag === 'Health Camp' ? 'వైద్య శిబిరం' : item.tag) : item.tag}
                       </span>
                       <h3 className="text-xl font-bold text-white leading-tight pr-4">
-                        {item.alt}
+                        {language === 'te' ? 'కార్యక్రమ దృశ్యం' : item.alt}
                       </h3>
                     </div>
                   </div>
@@ -268,10 +270,10 @@ export default function MediaArchivePage() {
               
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-8">
                 <span className="text-[10px] font-bold bg-primary text-white px-3 py-1 uppercase tracking-widest mb-3 inline-block shadow-sm">
-                  {filteredGallery[selectedImageIndex].tag}
+                  {language === 'te' ? (filteredGallery[selectedImageIndex].tag === 'Public Address' ? 'బహిరంగ సభ' : filteredGallery[selectedImageIndex].tag === 'Governance' ? 'పరిపాలన' : filteredGallery[selectedImageIndex].tag === 'Education' ? 'విద్య' : filteredGallery[selectedImageIndex].tag === 'Leadership' ? 'నాయకత్వం' : filteredGallery[selectedImageIndex].tag === 'Community' ? 'కమ్యూనిటీ' : filteredGallery[selectedImageIndex].tag === 'Emergency Relief' ? 'అత్యవసర సహాయం' : filteredGallery[selectedImageIndex].tag === 'Public Rally' ? 'బహిరంగ సభ' : filteredGallery[selectedImageIndex].tag === 'Relief Work' ? 'సహాయక చర్యలు' : filteredGallery[selectedImageIndex].tag === 'Infrastructure' ? 'మౌలిక సదుపాయాలు' : filteredGallery[selectedImageIndex].tag === 'Campaign' ? 'ప్రచారం' : filteredGallery[selectedImageIndex].tag === 'Rally' ? 'ర్యాలీ' : filteredGallery[selectedImageIndex].tag === 'Field Visit' ? 'క్షేత్ర పర్యటన' : filteredGallery[selectedImageIndex].tag === 'Health Camp' ? 'వైద్య శిబిరం' : filteredGallery[selectedImageIndex].tag) : filteredGallery[selectedImageIndex].tag}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">
-                  {filteredGallery[selectedImageIndex].alt}
+                  {language === 'te' ? 'కార్యక్రమ దృశ్యం' : filteredGallery[selectedImageIndex].alt}
                 </h3>
               </div>
             </motion.div>

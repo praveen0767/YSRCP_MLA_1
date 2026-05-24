@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-slate-950 text-slate-300 border-t-[6px] border-primary relative overflow-hidden">
       {/* Colorful Gradient Blobs */}
@@ -21,12 +25,12 @@ export function Footer() {
                 <Image src="/gallery/logo_main.jpeg" alt="Logo" fill sizes="56px" className="object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black text-white leading-none tracking-tighter uppercase">KUNCHE RAMANARAO</span>
-                <span className="text-[10px] font-bold text-secondary uppercase tracking-[0.3em] mt-1">FOR AMALAPURAM</span>
+                <span className="text-xl font-black text-white leading-none tracking-tighter uppercase">{t("nav.title")}</span>
+                <span className="text-[10px] font-bold text-secondary uppercase tracking-[0.3em] mt-1">{t("nav.subtitle")}</span>
               </div>
             </div>
             <p className="text-sm font-light leading-relaxed text-slate-400 max-w-sm">
-              Dedicated to the transparent, inclusive, and rapid development of Amalapuram. Guided by the principles of the YSRCP and the continuous service of the Good Seed Foundation.
+              {t("footer.description")}
             </p>
             <div className="flex items-center space-x-4 pt-2">
               <Link href="https://www.facebook.com/kunchevenkataramanarao" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center w-12 h-12 rounded-full border border-[#1877F2]/30 bg-[#1877F2]/10 backdrop-blur-sm shadow-sm hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.5)] transition-all duration-300">
@@ -50,26 +54,26 @@ export function Footer() {
           {/* Links Grid */}
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-12 lg:pl-16">
             <div>
-              <h4 className="text-[10px] font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-slate-800 pb-4">Initiatives</h4>
+              <h4 className="text-[10px] font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-slate-800 pb-4">{t("footer.quickLinks")}</h4>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/#about" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> About the Leader</Link></li>
-                <li><Link href="/#work" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> Governance & Work</Link></li>
-                <li><Link href="/foundation" className="hover:text-secondary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-secondary" /> Good Seed Foundation</Link></li>
-                <li><Link href="/#social" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> Media Archive</Link></li>
+                <li><Link href="/#about" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> {t("nav.about")}</Link></li>
+                <li><Link href="/#work" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> {t("nav.publicWork")}</Link></li>
+                <li><Link href="/foundation" className="hover:text-secondary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-secondary" /> {t("nav.foundation")}</Link></li>
+                <li><Link href="/archive" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> {t("nav.mediaArchive")}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-[10px] font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-slate-800 pb-4">Civic Action</h4>
+              <h4 className="text-[10px] font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-slate-800 pb-4">{t("footer.civicAction")}</h4>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link href="/#contact" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> Report a Grievance</Link></li>
-                <li><Link href="#" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> Volunteer Program</Link></li>
-                <li><Link href="#" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> Press & Media</Link></li>
+                <li><Link href="/#contact" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> {t("footer.reportGrievance")}</Link></li>
+                <li><Link href="#" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> {t("footer.volunteerProgram")}</Link></li>
+                <li><Link href="#" className="hover:text-primary flex items-center group transition-colors"><ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" /> {t("footer.pressMedia")}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-[10px] font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-slate-800 pb-4">Contact Office</h4>
+              <h4 className="text-[10px] font-bold text-white mb-6 uppercase tracking-[0.2em] border-b border-slate-800 pb-4">{t("footer.contact")}</h4>
               <ul className="space-y-5 text-sm font-medium text-slate-400">
                 <li className="flex items-start space-x-4">
                   <div className="w-8 h-8 rounded-full bg-[#1877F2]/10 border border-[#1877F2]/20 flex items-center justify-center shrink-0">
@@ -96,12 +100,11 @@ export function Footer() {
         
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">
-            &copy; {new Date().getFullYear()} KUNCHE RAMANARAO FOR AMALAPURAM. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("nav.title")} {t("nav.subtitle")}. {t("footer.rights")}
           </p>
-          <div className="flex space-x-8 text-xs text-slate-500 font-bold uppercase tracking-wider">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Accessibility</Link>
+          <div className="flex space-x-6 text-xs text-slate-500 font-medium">
+            <Link href="#" className="hover:text-primary transition-colors">{t("footer.privacy")}</Link>
+            <Link href="#" className="hover:text-primary transition-colors">{t("footer.terms")}</Link>
           </div>
         </div>
       </div>

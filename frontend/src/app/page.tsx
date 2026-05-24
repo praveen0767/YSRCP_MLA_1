@@ -59,7 +59,10 @@ const SOCIAL_FEED_ITEMS = [
   }
 ];
 
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+
 export default function Home() {
+  const { t, language } = useLanguage();
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -102,25 +105,25 @@ export default function Home() {
           >
             {/* Monumental Slogan */}
             <h1 className="hidden md:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1] drop-shadow-2xl">
-              KUNCHE RAMANARAO <br className="hidden md:block" />
-              <span className="text-white opacity-90 block mt-2">FOR AMALAPURAM</span>
+              {t("home.hero.slogan1")} <br className="hidden md:block" />
+              <span className="text-white opacity-90 block mt-2">{t("home.hero.slogan2")}</span>
             </h1>
             
             {/* Supporting Trust Line */}
             <p className="text-[11px] sm:text-sm md:text-2xl lg:text-3xl text-slate-200 font-bold tracking-[0.2em] uppercase leading-relaxed max-w-3xl border-l-2 border-secondary/50 pl-4 md:pl-6 mx-auto md:mx-0 text-left">
-              Of the people. For the people. By the people.
+              {t("home.hero.trust")}
             </p>
             
             {/* CTA Zone */}
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-8 justify-center md:justify-start">
               <Link href="#work" className="w-full sm:w-auto">
                 <Button className="w-full bg-secondary hover:bg-secondary/90 text-slate-900 rounded-none h-14 md:h-16 px-10 md:px-12 text-sm md:text-base font-black uppercase tracking-widest shadow-xl transition-all hover:scale-[1.02]">
-                  Join The Movement
+                  {t("home.hero.join")}
                 </Button>
               </Link>
               <Link href="#social" className="w-full sm:w-auto">
                 <Button variant="outline" className="w-full bg-slate-900/50 border-slate-500 text-white hover:bg-slate-900/80 hover:border-slate-400 rounded-none h-14 md:h-16 px-10 md:px-12 text-sm md:text-base font-bold uppercase tracking-widest shadow-sm backdrop-blur-sm transition-all">
-                  Explore The Archive
+                  {t("home.hero.explore")}
                 </Button>
               </Link>
             </div>
@@ -140,7 +143,7 @@ export default function Home() {
             }
           }}
         >
-          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold text-white/80 mb-3 drop-shadow-md">Scroll to discover</span>
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold text-white/80 mb-3 drop-shadow-md">{t("home.hero.scroll")}</span>
           <motion.div 
             animate={{ y: [0, 16, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -185,7 +188,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80"></div>
                 <div className="absolute bottom-6 left-6 text-white z-40">
-                  <span className="text-[10px] font-bold tracking-widest uppercase">Field Presence</span>
+                  <span className="text-[10px] font-bold tracking-widest uppercase">{t("home.about.fieldPresence")}</span>
                 </div>
               </div>
 
@@ -205,7 +208,7 @@ export default function Home() {
               >
                 <div className="w-8 h-px bg-primary"></div>
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">
-                  A Life of Dedicated Service
+                  {t("home.about.tag")}
                 </span>
               </motion.div>
               
@@ -216,7 +219,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] tracking-tighter"
               >
-                Leadership Built on <span className="text-primary relative inline-block">Trust & Action.<span className="absolute bottom-2 left-0 w-full h-3 bg-primary/10 -z-10"></span></span>
+                {t("home.about.title")}
               </motion.h2>
               
               <motion.div 
@@ -227,10 +230,10 @@ export default function Home() {
                 className="space-y-6 text-lg text-slate-600 font-light leading-relaxed border-l border-slate-200 pl-6"
               >
                 <p>
-                  For years, Kunche Ramanarao has been a pillar of unwavering support in Amalapuram. Guided by a deep commitment to the YSRCP's vision of inclusive welfare, his journey is defined by tireless dedication to the community—serving all citizens without discrimination of caste, religion, region, or background.
+                  {t("home.about.p1")}
                 </p>
                 <p>
-                  Believing firmly that one does not need official power to serve meaningfully, he has continuously uplifted the region through extensive social work, disaster relief, and grassroots engagement. His presence is felt wherever help is needed.
+                  {t("home.about.p2")}
                 </p>
               </motion.div>
 
@@ -270,19 +273,21 @@ export default function Home() {
                 className="flex flex-wrap items-center gap-6 md:gap-8 pt-8 md:pt-10 mt-8 md:mt-10 border-t border-slate-200"
               >
                 <div className="flex flex-col">
-                  <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter">24/7</span>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-2">Community Access</span>
+                  <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter">50+</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-2">{t("home.about.stats.villages")}</span>
                 </div>
                 <div className="w-px h-16 bg-slate-200 hidden sm:block"></div>
                 <div className="flex flex-col">
-                  <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter">100%</span>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-2">Commitment</span>
+                  <span className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter">5K+</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-2">{t("home.about.stats.grievances")}</span>
                 </div>
                 <div className="w-px h-16 bg-slate-200 hidden md:block"></div>
                 <div className="flex flex-col mt-4 md:mt-0 flex-1">
-                  <p className="text-sm font-medium text-slate-500 leading-relaxed italic border-l-2 border-primary pl-4">
-                    "With official authority, we will build a stronger, more developed Amalapuram."
-                  </p>
+                  <Link href="#work">
+                    <Button variant="link" className="text-primary hover:text-primary/80 font-bold px-0 uppercase tracking-widest text-xs">
+                      {t("home.about.learnMore")} <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
 
@@ -308,18 +313,18 @@ export default function Home() {
               <div className="inline-flex items-center space-x-3">
                 <div className="w-8 h-px bg-secondary"></div>
                 <span className="text-[10px] font-bold tracking-[0.2em] text-secondary uppercase">
-                  Primary Service Engine
+                  {t("home.foundation.tag")}
                 </span>
               </div>
               <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tighter">
-                The Good Seed Foundation.
+                {t("home.foundation.title")}
               </h2>
               <p className="text-lg text-slate-600 font-light leading-relaxed">
-                Community welfare requires constant action. The Good Seed Foundation is the primary service engine for humanitarian efforts across Amalapuram, delivering immediate support to those in need.
+                {t("home.foundation.desc")}
               </p>
               <Link href="/foundation" className="inline-block">
                 <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-none h-12 px-8 text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all hover:scale-[1.02]">
-                  Explore Foundation Work
+                  {t("home.foundation.initiatives")}
                 </Button>
               </Link>
             </motion.div>
@@ -363,13 +368,13 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/gallery/Social work/GoodSeed_1.jpeg" alt="Health Camps" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm">
-                  Healthcare
+                  {t("categories.health")}
                 </div>
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">Free Health Camps</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">{language === 'te' ? "ఉచిత వైద్య శిబిరాలు" : "Free Health Camps"}</h3>
                 <p className="text-sm text-slate-500 font-light leading-relaxed mb-6 flex-1">
-                  Monthly diagnostic and general health camps providing vital medical access to remote hamlets.
+                  {t("home.foundation.list.health")}
                 </p>
                 <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest pt-4 border-t border-slate-100">
                   <span>Amalapuram Rural</span>
@@ -390,13 +395,13 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/gallery/Par_core_2.jpeg" alt="Governance" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm">
-                  Governance
+                  {t("categories.infrastructure")}
                 </div>
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">Infrastructure Development</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">{language === 'te' ? "మౌలిక సదుపాయాల అభివృద్ధి" : "Infrastructure Development"}</h3>
                 <p className="text-sm text-slate-500 font-light leading-relaxed mb-6 flex-1">
-                  Securing state funds for vital road networks and representing pressing local issues in assembly.
+                  {t("home.foundation.list.water")}
                 </p>
                 <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest pt-4 border-t border-slate-100">
                   <span>Constituency</span>
@@ -417,13 +422,13 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/gallery/core_1.jpeg" alt="Crisis Relief" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-red-600 shadow-sm">
-                  Emergency
+                  {t("categories.emergency")}
                 </div>
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Disaster Response</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">{language === 'te' ? "విపత్తు నిర్వహణ" : "Disaster Response"}</h3>
                 <p className="text-sm text-slate-500 font-light leading-relaxed mb-6 flex-1">
-                  Rapid intervention during floods and health crises, ensuring immediate relief kits and support.
+                  {t("home.foundation.list.education")}
                 </p>
                 <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-widest pt-4 border-t border-slate-100">
                   <span>Rapid Action</span>
@@ -440,10 +445,10 @@ export default function Home() {
         <div className="w-full max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 mb-4 md:mb-6">
-              Live Updates.
+              {t("home.feed.title")}
             </h2>
             <p className="text-lg text-slate-600 font-medium">
-              Real-time dispatches from the ground. See where we are, what we're building, and who we're meeting every single day.
+              {t("home.feed.desc")}
             </p>
           </div>
 
@@ -461,7 +466,7 @@ export default function Home() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={post.image} alt={post.category} className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.03]" />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary shadow-sm">
-                    {post.category}
+                    {language === 'te' && post.category === 'Field Visit' ? 'క్షేత్ర పర్యటన' : language === 'te' && post.category === 'Community Health' ? 'కమ్యూనిటీ హెల్త్' : language === 'te' && post.category === 'Education' ? 'విద్య' : post.category}
                   </div>
                 </div>
                 <div className="p-6 md:p-8 flex flex-col flex-grow">
@@ -470,7 +475,7 @@ export default function Home() {
                     <span>{post.date}</span>
                   </div>
                   <p className="text-slate-700 text-sm md:text-base leading-relaxed font-medium mb-6 flex-grow">
-                    {post.content}
+                    {language === 'te' && post.id === 1 ? "గ్రామీణ ప్రాంతంలో నూతన నీటి శుద్ధి కర్మాగారం నిర్మాణ పనులను పరిశీలించారు. పనులు వేగంగా జరుగుతున్నాయి." : language === 'te' && post.id === 2 ? "మెగా హెల్త్ క్యాంప్ ద్వారా 1,500 మందికి ఉచిత వైద్యం అందించాం. ప్రజల ఆరోగ్యమే మా ప్రాధాన్యత." : language === 'te' && post.id === 3 ? "500 మంది విద్యార్థులకు ఉచిత పాఠశాల కిట్లను పంపిణీ చేశాం. విద్య ద్వారానే అసలైన సాధికారత సాధ్యం." : post.content}
                   </p>
                   <div className="flex items-center justify-between pt-6 border-t border-slate-100 text-slate-500 text-xs font-bold uppercase tracking-widest">
                     <div className="flex space-x-6">
@@ -492,7 +497,7 @@ export default function Home() {
           
           <div className="mt-16 text-center">
             <Button variant="outline" className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 rounded-none h-14 px-10 text-xs md:text-sm font-bold uppercase tracking-widest shadow-sm">
-              Load More Updates
+              {t("home.feed.readMore")}
             </Button>
           </div>
         </div>
@@ -515,14 +520,14 @@ export default function Home() {
               <div className="inline-flex items-center space-x-3">
                 <div className="w-8 h-px bg-primary"></div>
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">
-                  Media & Updates
+                  {t("home.archive.tag")}
                 </span>
               </div>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900">
-                The Living Archive.
+                {t("home.archive.title")}
               </h2>
               <p className="text-lg text-slate-600 font-light max-w-2xl leading-relaxed">
-                A real-time look into our daily connection with the people of Amalapuram. Transparency through continuous, undeniable evidence of action.
+                {t("home.archive.desc")}
               </p>
             </motion.div>
           </div>
@@ -544,7 +549,7 @@ export default function Home() {
                     : "bg-white text-slate-600 border-slate-200 hover:border-primary/30 hover:bg-slate-50"
                 }`}
               >
-                {cat}
+                {t(cat === 'All' ? 'categories.all' : cat === 'Public Work' ? 'categories.publicWork' : cat === 'Social Work' ? 'categories.socialWork' : cat === 'Crisis' ? 'categories.crisis' : cat === 'Events' ? 'categories.events' : 'categories.portraits')}
               </button>
             ))}
           </motion.div>
@@ -570,10 +575,10 @@ export default function Home() {
                   
                   <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
                     <span className="text-[10px] font-bold bg-primary text-white px-3 py-1 uppercase tracking-widest mb-3 inline-block shadow-sm">
-                      {item.tag}
+                      {language === 'te' ? (item.tag === 'Public Address' ? 'బహిరంగ సభ' : item.tag === 'Governance' ? 'పరిపాలన' : item.tag === 'Education' ? 'విద్య' : item.tag === 'Leadership' ? 'నాయకత్వం' : item.tag === 'Community' ? 'కమ్యూనిటీ' : item.tag === 'Emergency Relief' ? 'అత్యవసర సహాయం' : item.tag === 'Public Rally' ? 'బహిరంగ సభ' : item.tag === 'Relief Work' ? 'సహాయక చర్యలు' : item.tag === 'Infrastructure' ? 'మౌలిక సదుపాయాలు' : item.tag === 'Campaign' ? 'ప్రచారం' : item.tag === 'Rally' ? 'ర్యాలీ' : item.tag === 'Field Visit' ? 'క్షేత్ర పర్యటన' : item.tag === 'Health Camp' ? 'వైద్య శిబిరం' : item.tag) : item.tag}
                     </span>
                     <p className="text-white font-bold text-xl md:text-2xl leading-tight transition-colors duration-300">
-                      {item.alt}
+                      {language === 'te' ? 'కార్యక్రమ దృశ్యం' : item.alt}
                     </p>
                   </div>
                   
@@ -588,14 +593,14 @@ export default function Home() {
           
           <Link href="/archive" className="w-full">
             <Button className="mt-10 w-full md:hidden bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 shadow-sm rounded-none h-14 text-sm font-bold uppercase tracking-widest">
-              Access Full Archive
+              {t("home.archive.accessFull")}
             </Button>
           </Link>
           
           <div className="mt-12 hidden md:flex justify-center">
             <Link href="/archive">
               <Button className="bg-primary hover:bg-primary/90 text-white rounded-none h-14 px-12 text-sm font-bold shadow-lg transition-all hover:scale-[1.02] uppercase tracking-widest">
-                Explore The Complete Archive
+                {t("home.archive.exploreComplete")}
               </Button>
             </Link>
           </div>
@@ -651,10 +656,10 @@ export default function Home() {
               {/* Caption Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-8">
                 <span className="text-[10px] font-bold bg-primary text-white px-3 py-1 uppercase tracking-widest mb-3 inline-block shadow-sm">
-                  {filteredGallery[selectedImageIndex].tag}
+                  {language === 'te' ? (filteredGallery[selectedImageIndex].tag === 'Public Address' ? 'బహిరంగ సభ' : filteredGallery[selectedImageIndex].tag === 'Governance' ? 'పరిపాలన' : filteredGallery[selectedImageIndex].tag === 'Education' ? 'విద్య' : filteredGallery[selectedImageIndex].tag === 'Leadership' ? 'నాయకత్వం' : filteredGallery[selectedImageIndex].tag === 'Community' ? 'కమ్యూనిటీ' : filteredGallery[selectedImageIndex].tag === 'Emergency Relief' ? 'అత్యవసర సహాయం' : filteredGallery[selectedImageIndex].tag === 'Public Rally' ? 'బహిరంగ సభ' : filteredGallery[selectedImageIndex].tag === 'Relief Work' ? 'సహాయక చర్యలు' : filteredGallery[selectedImageIndex].tag === 'Infrastructure' ? 'మౌలిక సదుపాయాలు' : filteredGallery[selectedImageIndex].tag === 'Campaign' ? 'ప్రచారం' : filteredGallery[selectedImageIndex].tag === 'Rally' ? 'ర్యాలీ' : filteredGallery[selectedImageIndex].tag === 'Field Visit' ? 'క్షేత్ర పర్యటన' : filteredGallery[selectedImageIndex].tag === 'Health Camp' ? 'వైద్య శిబిరం' : filteredGallery[selectedImageIndex].tag) : filteredGallery[selectedImageIndex].tag}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">
-                  {filteredGallery[selectedImageIndex].alt}
+                  {language === 'te' ? 'కార్యక్రమ దృశ్యం' : filteredGallery[selectedImageIndex].alt}
                 </h3>
               </div>
             </motion.div>
@@ -693,7 +698,7 @@ export default function Home() {
             className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-none border border-white/20 text-white mb-6 md:mb-8"
           >
             <Mail className="w-4 h-4" />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Connect With Us</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">{t("home.contact.tag")}</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -702,7 +707,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 md:mb-8 text-white"
           >
-            We Are Here To Listen.
+            {t("home.contact.title")}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -711,7 +716,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12 max-w-2xl mx-auto"
           >
-            Whether you need to report a local issue, request public assistance, or suggest a new development plan for Amalapuram, our doors are always open.
+            {t("home.contact.desc")}
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -722,12 +727,12 @@ export default function Home() {
           >
             <Link href="#contact" className="w-full sm:w-auto">
               <Button className="w-full bg-secondary hover:bg-secondary/90 text-white rounded-none h-14 px-10 text-sm font-bold shadow-2xl transition-all hover:scale-[1.02] uppercase tracking-widest">
-                Report a Grievance
+                {t("footer.reportGrievance")}
               </Button>
             </Link>
             <Link href="tel:+919876543210" className="w-full sm:w-auto">
               <Button variant="outline" className="w-full bg-transparent border border-white text-white hover:bg-white/10 rounded-none h-14 px-10 text-sm font-bold shadow-lg uppercase tracking-widest backdrop-blur-sm">
-                <Phone className="mr-2 w-4 h-4" /> Call the Office
+                <Phone className="mr-2 w-4 h-4" /> {language === 'te' ? 'కార్యాలయానికి కాల్ చేయండి' : 'Call the Office'}
               </Button>
             </Link>
           </motion.div>

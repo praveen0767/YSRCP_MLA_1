@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Heart, Droplet, BookOpen, Utensils, Users, ArrowRight, PlayCircle, Calendar, MapPin, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const impactStats = [
   { icon: Droplet, value: "50,000+", label: "Clean Water Access" },
@@ -20,6 +21,8 @@ const galleryImages = [
 ];
 
 export default function FoundationPage() {
+  const { t, language } = useLanguage();
+
   return (
     <div className="flex flex-col w-full min-h-screen bg-slate-50 selection:bg-secondary/20">
 
@@ -59,12 +62,12 @@ export default function FoundationPage() {
             >
               <Heart className="w-4 h-4 text-secondary fill-secondary animate-pulse" />
               <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white uppercase drop-shadow-md">
-                Service to People
+                {language === 'te' ? 'ప్రజలకు సేవ' : 'Service to People'}
               </span>
             </motion.div>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500 leading-[0.95] drop-shadow-xl">
-              Good Seed Foundation.
+              {t("home.foundation.title")}
             </h1>
             
             <motion.p 
@@ -73,7 +76,7 @@ export default function FoundationPage() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed border-l-2 border-secondary/40 pl-6 max-w-3xl drop-shadow-sm"
             >
-              We believe that true leadership starts with compassion. Working tirelessly on the ground to uplift families, respond to crises, and plant the seeds for a better tomorrow in Amalapuram.
+              {language === 'te' ? 'నాయకత్వం అంటే అధికారంలో కాదు, ఆప్యాయతలో ఉంటుంది. మా ప్రజల కష్టాల్లో పాలుపంచుకుంటూ, అమలాపురం అభివృద్ధికి బీజాలు వేస్తున్నాం.' : 'We believe that true leadership starts with compassion. Working tirelessly on the ground to uplift families, respond to crises, and plant the seeds for a better tomorrow in Amalapuram.'}
             </motion.p>
           </motion.div>
         </div>
@@ -85,7 +88,7 @@ export default function FoundationPage() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2"
         >
-          <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-slate-400">Discover</span>
+          <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-slate-400">{t("home.hero.scroll")}</span>
           <div className="w-px h-12 bg-slate-800 relative overflow-hidden">
             <motion.div 
               animate={{ y: ["-100%", "100%"] }}
@@ -117,7 +120,7 @@ export default function FoundationPage() {
                   <h3 className="text-3xl md:text-5xl font-black text-slate-900 mb-2 md:mb-4 tracking-tighter">{stat.value}</h3>
                   <div className="w-8 h-px bg-secondary mb-3 md:mb-4 group-hover:w-16 transition-all duration-500"></div>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-relaxed">
-                    {stat.label}
+                    {language === 'te' ? (stat.label === 'Clean Water Access' ? 'స్వచ్ఛమైన నీరు' : stat.label === 'Emergency Meals' ? 'అత్యవసర భోజనం' : stat.label === 'Students Supported' ? 'విద్యార్థులకు మద్దతు' : stat.label === 'Medical Camps' ? 'వైద్య శిబిరాలు' : stat.label) : stat.label}
                   </p>
                 </motion.div>
               );
@@ -131,10 +134,10 @@ export default function FoundationPage() {
         <div className="w-full max-w-[1800px] mx-auto px-6 md:px-12">
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 mb-4 md:mb-6">
-              Journey of Service.
+              {language === 'te' ? 'సేవా ప్రయాణం.' : 'Journey of Service.'}
             </h2>
             <p className="text-lg text-slate-600 font-medium">
-              Every year, we scale our efforts to reach more families. Our history is defined not by words, but by measurable action on the ground.
+              {language === 'te' ? 'ప్రతి సంవత్సరం మా సేవను విస్తరిస్తున్నాం. మాటలతో కాదు, చేతలతో చూపిస్తున్న మా సేవా చరిత్ర.' : 'Every year, we scale our efforts to reach more families. Our history is defined not by words, but by measurable action on the ground.'}
             </p>
           </div>
 
@@ -164,8 +167,12 @@ export default function FoundationPage() {
                   
                   <div className={`w-full md:w-5/12 ${i % 2 === 0 ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
                     <div className="bg-white p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-shadow group">
-                      <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-3 md:mb-4">{event.title}</h3>
-                      <p className="text-slate-600 font-medium leading-relaxed">{event.desc}</p>
+                      <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-3 md:mb-4">
+                        {language === 'te' && event.title === 'Mega Health & Water Drive' ? 'మెగా హెల్త్ మరియు వాటర్ డ్రైవ్' : language === 'te' && event.title === 'Flood Relief Operations' ? 'వరద సహాయ కార్యక్రమాలు' : language === 'te' && event.title === 'Foundation Established' ? 'ఫౌండేషన్ ఏర్పాటు' : event.title}
+                      </h3>
+                      <p className="text-slate-600 font-medium leading-relaxed">
+                        {language === 'te' && event.year === '2026' ? 'అమలాపురం పరిధిలో 50 గ్రామాలకు వైద్య సేవలందించాం. మంచినీటి ప్లాంట్లను ప్రారంభించాం.' : language === 'te' && event.year === '2025' ? 'గోదావరి వరదల్లో 2000 కుటుంబాలకు నిత్యావసర సరుకులు మరియు ఎమర్జెన్సీ కిట్లు పంపిణీ చేశాం.' : language === 'te' && event.year === '2024' ? 'Good Seed ఫౌండేషన్ అధికారికంగా ప్రారంభించబడింది.' : event.desc}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -183,11 +190,11 @@ export default function FoundationPage() {
               <div className="inline-flex items-center space-x-3">
                 <div className="w-8 h-px bg-secondary"></div>
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase">
-                  Proof of Work
+                  {t("home.archive.tag")}
                 </span>
               </div>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900">
-                Visual Evidence.
+                {language === 'te' ? 'కార్యక్రమాల దృశ్యాలు.' : 'Visual Evidence.'}
               </h2>
             </div>
           </div>
@@ -208,7 +215,7 @@ export default function FoundationPage() {
 
                 <div className="absolute top-6 left-6">
                   <span className="bg-white/90 backdrop-blur-md text-secondary text-[10px] font-bold px-3 py-1 uppercase tracking-widest shadow-sm">
-                    {img.category}
+                    {t(img.category === 'Community Health' ? 'categories.health' : img.category === 'Education' ? 'categories.socialWork' : img.category === 'Relief Work' ? 'categories.crisis' : img.category === 'Infrastructure' ? 'categories.infrastructure' : 'categories.all')}
                   </span>
                 </div>
 
@@ -217,7 +224,9 @@ export default function FoundationPage() {
                     <Calendar className="w-3.5 h-3.5" />
                     <span>{img.date}</span>
                   </div>
-                  <p className="text-white text-xl md:text-2xl font-bold leading-tight">{img.caption}</p>
+                  <p className="text-white text-xl md:text-2xl font-bold leading-tight">
+                    {language === 'te' ? (img.category === 'Community Health' ? 'ఉచిత వైద్య శిబిరం' : img.category === 'Education' ? 'విద్యార్థులకు ఉచిత కిట్ల పంపిణీ' : img.category === 'Relief Work' ? 'వరద సహాయ సామగ్రి పంపిణీ' : img.category === 'Infrastructure' ? 'నూతన నీటి ప్లాంట్ ప్రారంభోత్సవం' : img.caption) : img.caption}
+                  </p>
                 </div>
               </motion.div>
             ))}
